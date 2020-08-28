@@ -1,0 +1,498 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang16393{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}}
+{\colortbl ;\red255\green0\blue0;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Eggs \{   \par
+    int doX(Long x, Long y) \{ return 1;\}\par
+    int doX(long... x) \{ return 2;\}\par
+    int doX(Integer x, Integer y) \{ return 3; \}\par
+    int doX(Number n, Number m) \{ return 4; \}\par
+   \par
+    public static void main(String[ ] args) \{\par
+        new Eggs().go();\par
+    \}\par
+ \par
+    void go() \{\par
+        short s = 7;\par
+        System.out.println(doX(s,s) + " ");\par
+        System.out.println(doX(7,7));\par
+    \}\par
+\}\par
+ \par
+A.    1  1\par
+B.    2  1\par
+C.    3  1\par
+D.    4  1\par
+E.    2  3\par
+F.    3  3\par
+\cf1 G.    4  3\par
+\cf0  \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Mixer \{   \par
+    Mixer() \{ \}\par
+    Mixer(Mixer m) \{ m1 = m; \}\par
+    Mixer m1;\par
+    public static void main(String[ ] args) \{\par
+        Mixer m2 = new Mixer();\par
+        Mixer m3 = new Mixer(m2);\par
+        m3.go();\par
+        Mixer m4 = m3.m1;\par
+        m4.go();\par
+        Mixer m5 = m2.m1;\par
+        m5.go();\par
+    \}\par
+    void go() \{\par
+        System.out.println("hi ");\par
+    \}\par
+\}\par
+ \par
+A.    hi\par
+B.    hi hi\par
+C.    hi hi hi\par
+D.    Compilation fails\par
+E.    hi, followed by an exception\par
+\cf1\b F.    hi hi, followed by an exception\par
+\cf0\b0  \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Alien \{\par
+    String invade(short ships) \{\par
+        return " a few";\par
+    \}\par
+\}\par
+ \par
+class Defender \{   \par
+    public static void main(String[] args) \{\par
+        System.out.println(new Alien().invade(7));\par
+    \}\par
+\}\par
+ \par
+A.    many\par
+B.    a few\par
+\cf1\b C.    Compilation fails\par
+\cf0\b0 D.    The output is not predictable\par
+E.    An exception is thrown at runtime\par
+ \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Fizz \{\par
+    int x = 5;\par
+    public static void main(String[] args) \{\par
+        final Fizz f1 = new Fizz();\par
+        Fizz f2 = new Fizz();\par
+        Fizz f3 = FizzSwitch(f1, f2);\par
+        System.out.println((f1 == f3) + " " + (f1.x == f3.x));\par
+    \}\par
+    static Fizz FizzSwitch(Fizz x, Fizz y) \{\par
+        final Fizz z = x;\par
+        z.x = 6;\par
+        return z;\par
+    \}\par
+\}\par
+\cf1\b  \par
+A.    true true\par
+\cf0\b0 B.    false true\par
+C.    true false\par
+D.    false false\par
+E.    Compilation fails.\par
+F.    An exception is thrown at runtime.\par
+ \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Knowing \{   \par
+    static final long tooth = 343L;\par
+    static long doIt(long tooth) \{\par
+        System.out.print(++tooth + " ");\par
+        return ++tooth;\par
+    \}   \par
+    public static void main(String[] args) \{\par
+        System.out.print(tooth + " ");\par
+        final long tooth = 340L;\par
+        new Knowing().doIt(tooth);\par
+        System.out.println(tooth);\par
+    \}\par
+\}\par
+ \par
+A.    343  340  340\par
+B.    343  340  342\par
+C.    343  341  342\par
+\cf1\b D.    343  341  340\par
+\cf0\b0 E.    343  341  343\par
+F.    Compilation fails.\par
+G.    An exception is thrown at runtime.\par
+ \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Bird \{   \par
+    \{ System.out.print("b1 "); \}\par
+   \par
+    public Bird() \{\par
+        System.out.print("b2 ");\par
+    \}\par
+\}\par
+ \par
+class Raptor extends Bird \{\par
+    static \{ System.out.print("r1 "); \}\par
+   \par
+    public Raptor() \{\par
+        System.out.print("r2 ");\par
+    \}\par
+   \par
+    \{ System.out.print("r3 "); \}\par
+   \par
+    static \{ System.out.print("r4 "); \}\par
+\}\par
+ \par
+class Hawk extends Raptor \{\par
+    public static void main(String[] args) \{\par
+        System.out.print("pre ");\par
+        new Hawk();\par
+        System.out.println("hawk ");\par
+    \}\par
+\}\par
+ \par
+A.    pre b1 b2 r3 r2 hawk\par
+B.    pre b2 b1 r2 r3 hawk\par
+C.    pre b2 b1 r2 r3 hawk r1 r4\par
+\cf1\b D.    r1 r4 pre b1 b2 r3 r2 hawk\par
+\cf0\b0 E.    r1 r4 pre b2 b1 r2 r3 hawk\par
+F.    pre r1 r4 b1 b2 r3 r2 hawk\par
+G.    pre r1 r4 b2 b1 r2 r3 hawk\par
+H.    The order of output cannot be predicted.\par
+I.     Compilation fails.\par
+ \par
+ \par
+ \par
+Problem Statement:\par
+Which is true? (Choose all that apply.)\par
+A.    \ldblquote X extends Y\rdblquote  is correct if and only if X is a class and Y is an interface.\par
+B.    \ldblquote X extends Y\rdblquote  is correct if and only if X is an interface and Y is a class.\cf1\b\par
+C.    \ldblquote X extends Y\rdblquote  is correct if X and Y are either both classes or both interfaces.\par
+\cf0\b0 D.    \ldblquote X extends Y\rdblquote  is correct for all combinations of X and Y being classes and/or interfaces.\par
+ \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Top \{\par
+    public Top(String s) \{\par
+        System.out.println("B");\par
+    \}\par
+   \par
+    public class Bottom2 extends Top \{\par
+        public Bootom2(String s) \{\par
+            System.out.println("D");\par
+        \}\par
+        public static void main(String[] args) \{\par
+            new Bottom2("C");\par
+            System.out.println(" ");\par
+        \}\par
+    \}\par
+\}\par
+ \par
+A.    BD\par
+B.    DB\par
+C.    BDC\par
+D.    DBC\par
+\cf1\b E.    Compilation fails.\par
+\cf0\b0 Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Clidders \{\par
+    public final void flipper() \{\par
+        System.out.println("Clidder");\par
+    \}\par
+\}\par
+ \par
+public class Clidlets  extends Clidders \{\par
+    public void flipper() \{\par
+        System.out.println("Flip a Clidlet");\par
+        super.flipper();\par
+    \}   \par
+    public static void main(String[] args) \{\par
+        new Clidlets().flipper();\par
+    \}   \par
+\}\par
+ \par
+A.    Flip a Clidlet\par
+B.    Flip  a Clidder\par
+C.    Flip a Clidder\par
+Flip a Clidlet\par
+D.    Flip a Clidlet\par
+Flip a Clidder\par
+\cf1\b E.    Compilation fails.\par
+\cf0\b0  \par
+ \par
+Problem Statement:\par
+Given, the following program:\par
+1. class Programmer \{\par
+2.     Programmer debug() \{ return this; \}   \par
+3. \}\par
+4. class SCJP extends Programmer \{\par
+5.     // insert code here\par
+6.\}\par
+ \par
+Which method at line 5, will compile? (Choose all that apply.)\par
+A.    Programmer debug() \{ return this; \}\par
+B.    SCJP debug()  \{ return this; \}\par
+C.    Object debug() \{ return this; \}\par
+\cf1\b D.    int debug() \{ return 1; \}\par
+\cf0\b0 E.    int debug(int x) \{ return 1; \}\par
+F.    Object debug(int x) \{ return this; \}\par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Clidder \{\par
+    private final void flipper() \{\par
+        System.out.println("Clidder");\par
+    \}\par
+\}\par
+ \par
+public class Clidlet  extends Clidder \{\par
+    public final void flipper() \{\par
+        System.out.println("Clidlet");\par
+    \}\par
+    public static void main(String[] args) \{\par
+        new Clidlet().flipper();\par
+    \}   \par
+\}\par
+ \par
+\cf1\b A.    Clidlet\par
+\cf0\b0 B.    Clidder\par
+C.    Clidder\par
+Clidlet\par
+D.    Clidlet\par
+Clidder\par
+E.    Compilation fails.\par
+Problem Statement:\par
+Given the following:\par
+  i.     interface Base \{\par
+ii.         boolean m1 ();\par
+iii.         byte m2(short s);\par
+iv.     \}\par
+ \par
+Which code fragments will compile? (Choose all that apply.)\par
+ \par
+a)  interface Base2 implements Base \{ \}\par
+\cf1\b b)  abstract class Class2 extends Base \{\par
+\cf0\b0 c)  public boolean m1 ()  \{ return true; \}  \}\par
+d)  abstract class Class2 implements Base \{ \}\par
+e)  abstract class Class2 implements Base \{\par
+f)  public boolean m1 () \{ return (true); \}  \}\par
+g)  class Class2 implements Base \{\par
+h)  boolean m1 () \{ return false; \}\par
+i)  byte m2 (short s) \{ return 42; \} \}\par
+ \par
+ \par
+Problem Statement:\par
+Which of the following declare a compatible abstract class? (Choose all that apply.)\par
+ \par
+a)  public abstract class Canine \{ public Bark speak(); \}\par
+\cf1\b b)  public abstract class Canine \{ public Bark speak() \{ \} \}\par
+\cf0\b0 c)  public class Canine \{ public abstract Bark speak(); \}\par
+d)  public class Canine abstract \{ public abstract Bark speak(); \}\par
+ \par
+ \par
+ \par
+Problem Statement:\par
+Given:\par
+public abstract interface Frobnicate \{ public void twiddle(String s); \}\par
+ \par
+Which is a correct class?\par
+ \par
+a)  public abstract void twiddle(String s) \{ \}\par
+\}\par
+\cf1\b b)  public abstract class Frob implements Frobnicate \{ \}\par
+\cf0\b0 c)  public class Frob extends Frobnicate \{\par
+d)              public void twiddle(Integer i) \{ \}\par
+\}\par
+e)  public class Frob implements Frobnicate \{\par
+f)             public void twiddle(Integer i) \{ \}\par
+\}\par
+g)  public class Frob implements Frobnicate \{\par
+h)             public void twiddle(String i) \{ \}\par
+i)             public void twiddle(Integer s) \{ \}\par
+ \par
+ \par
+ \par
+Problem Statement:\par
+Which statement()s) are true? ()Choose all that apply.)\par
+A.    HAS-A relationships always rely on inheritance.\par
+\cf1\b B.    HAS-A relationships always rely on instance variables.\par
+\cf0\b0 C.    HAS-A relationships always require at least two class types.\par
+D.    HAS-A relationships always rely on polymorphism.\par
+E.    HAS-A relationships are always tightly coupled.\par
+ \par
+Problem Statement:\par
+Given:\par
+1. class Plant \{\par
+2.     String getName() ) \{ return \ldblquote plant\rdblquote ; \}\par
+3.     Plant getType() ) \{ return this; \}\par
+4. \}\par
+5. class Flower extends Plant \{\par
+6.     // insert code here\par
+7. \}\par
+8. class Tulip extends Flower \{ \}\par
+ \par
+Which statement()s), inserted at line 6, will compile? ()Choose all that apply.)\par
+A.    Flower getType() ) \{ return this; \}\par
+B.    String getType() ) \{ return \ldblquote this\rdblquote ; \}\par
+\cf1 C.    Plant getType() ) \{ return this; \}\par
+\cf0 D.   Tulip getType() ) \{ return new Tulip() ); \}\par
+ \par
+Problem Statement:\par
+Given:\par
+1.      class Zing \{\par
+2.      protected Hmpf h;\par
+3. \}\par
+4. class Woop extends Zing \{  \}\par
+5. class Hmpf \{ \}\par
+ \par
+Which is true?\par
+A.     Woop IS-A Hmpf and HAS-A zing.\par
+B.     Zing IS-A Woop and HAS-A Hmpf.\par
+C.     Hmpf HAS-A Woop and Woop IS-A Zing.\par
+\cf1\b D.    Woop HAS-A Hmpf and Woop IS-A Zing.\par
+\cf0\b0 E.     Zing HAS-A Hmpf and Zing IS-A Woop.\par
+ \par
+ \par
+Problem Statement:\par
+Given:\par
+            public class MyOuter \{\par
+         public static class MyInner \{\par
+                    public static void foo() ) \{ \}\par
+                \}\par
+           \}\par
+Which, if placed in a class other than MyOuter or MyInner, instantiates an instance of the nested class?\par
+\cf1\b A.    MyOuter.MyInner m = new MyOuter.MyInner() );\par
+\cf0\b0 B.    MyOuter.MyInner m2 = new MyInner() );\par
+C.    MyOuter m = new MyOuter() );\par
+MyOuter.MyInner mi = m.new MyOuter.MyInner() );\par
+D.    MyInner mi = new MyOuter.MyInner() );\par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+public abstract class AbstractTest \{\par
+   \par
+    public int getNum()) \{\par
+        return 45;\par
+    \}\par
+    public abstract class Bar \{\par
+        public int getNum()) \{\par
+            return 38;\par
+        \}\par
+    \}\par
+    public static void main()String[] args) \{\par
+        AbstractTest t = new AbstractTest()) \{\par
+            public int getNum()) \{\par
+                return 22;\par
+            \}\par
+        \};\par
+        AbstractTest.Bar f = t.new Bar()) \{\par
+            public int getNum()) \{\par
+                return 57;\par
+            \}\par
+        \};\par
+        System.out.println()f.getNum()) + " " + t.getNum()));\par
+    \}\par
+\}\par
+ \par
+\cf1\b A.    57  22\par
+\cf0\b0 B.    45  38\par
+C.    45  57\par
+D.    An exception occurs at runtime.\par
+E.    Compilation fails.\par
+ \par
+ \par
+Problem Statement:\par
+Given:\par
+class Input \{\par
+     public static void main(String[ ] args) \{\par
+          String s = \ldblquote -\rdblquote ;\par
+          try \{\par
+               doMath(args[0]);\par
+               s += \ldblquote t \rdblquote ;      // line 6\par
+          \}\par
+          finally \{\par
+               System.out.println(s += \ldblquote f \rdblquote );\par
+          \}\par
+     \}\par
+     public static void doMath(String a) \{\par
+          int y = 7 / Integer.parseInt(a);\par
+     \}\par
+\}\par
+ \par
+And the command-line invocations:\par
+java Input\par
+java Input 0\par
+ \par
+Which are true? (Choose all that apply.)             \par
+\cf1\b a)       Line 6 is executed exactly 0 times\par
+\cf0\b0 b)      Line 6 is executed exactly 1 time.\par
+c)       Line 6 is executed exactly 2 times.\par
+d)      The finally block is executed exactly 0 times.\par
+e)       The finally block is executed exactly 1 time.\par
+\cf1\b f)        The finally block is executed exactly 2 times.\par
+\cf0\b0 g)       Both invocations produce the same exceptions.\par
+\cf1\b h)      Each invocation produces a different exception.\par
+\cf0\b0  \par
+ \par
+Problem Statement:\par
+Given:\par
+try \{\par
+     int x = Integer.parseInt(\ldblquote two\rdblquote );\par
+\}\par
+ \par
+Which could be used to create an appropriate catch block? (Choose all that apply.)\par
+a)  ClassCastException  \par
+b)  IllegalStateException\par
+\cf1\b c)  NumberFormatException\par
+d)  IllegalArgumentException\par
+\cf0\b0 e)  ExceptionInitializerError\par
+f)  ArrayIndexOutOfBoundsException\par
+ \par
+ \par
+Problem Statement:\par
+What is the output of the following program?\par
+ \par
+class Emu \{\par
+ \par
+     static String s = "-";\par
+     public static void main(String[ ] args) \{\par
+          try \{\par
+               throw new Exception();\par
+          \} catch (Exception e) \{\par
+               try \{\par
+                    try \{\par
+                         throw new Exception();\par
+                    \} catch (Exception ex) \{\par
+                         s += "ic";\par
+                    \}\par
+                         throw new Exception();\par
+                    \} catch (Exception x) \{\par
+                         s += "mc ";\par
+                    \} finally \{\par
+                         s += "mf ";\par
+               \}\par
+          \} finally \{\par
+               s += "of ";\par
+          \}\par
+          System.out.println(s);\par
+     \}\par
+\}\par
+ \par
+a)  \f1\endash ic    of\par
+b)  \endash mf   of\par
+c)  \endash mc  mf\par
+d)  \endash ic    mf    of\par
+\cf1\b e)  \endash ic    mc   mf    of\par
+\cf0\b0 f)  \endash ic    mc   of     mf\f0\par
+}
+ 
