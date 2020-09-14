@@ -1,0 +1,13 @@
+create table WORLDCITY (CITY VARCHAR(20),COUNTRY VARCHAR(20),CONTINENET VARCHAR(20),LATITUDE NUMBER(10), NORTHSOUTH VARCHAR(1),LONGITUDE NUMBER(10),EASTWEST VARCHAR(2));
+
+i)select distinct COUNTRY,CONTINENT FROM WORLDCITY;
+ii)select * from WORLDCITY WHERE CITY LIKE 'R%' AND COUNTRY LIKE 'R%';
+iii)select * from WORLDCITY WHERE CITY LIKE '%e' AND COUNTRY LIKE '%e';
+iv)select * from WORLDCITY WHERE CITY LIKE '_A%' AND COUNTRY LIKE '-A%';
+
+
+
+9.1)
+i)select max(quantity) as maximum from order;
+
+ii)select min(quantity) as minmum from order;
