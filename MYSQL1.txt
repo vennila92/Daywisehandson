@@ -1,0 +1,44 @@
+a)
+
+create table PROGRAMMER (EmpNo integer(5)primary key,ProjId varcha(5),LastName varchar(30),FirstName varchar(30),HireDate date,Language varchar(15),TaskNo integer(2),Privilege varchar(25));
+
+
+b)
+insert into PROGRAMMER(EmpNo,ProjID,LastName,FirstName,HireDate,Language,TaskNo,Privilege)values(201,'NPR','Gupta','Saurav','1995-01-01','VB',52.'Secret'),(390,'KCW','Ghosh','Pinky','1993-01-05','Java',11,'TopSeceret');
+
+c)
+Create table WHEATHER(City varchar(20),State varchar(20),High integer(5),Low integer(5));
+
+insert into WHEARHER(City,State,High,Low)values('Calcutta','West Bengal',105,90),('trivendrum','Kerala',102,92),('Mumbai','Maharashtra',88,69);
+
+d)
+create TABLE BOOKS(BookId INTEGER(4)primary key,Title varchar(20),TopicId varchar(20),PublisherName varchar(20),Placeof Publication varchar(20),Price integer(5),PurchaseDate date,Shelf no varchar(5));
+
+
+insert into BOOKS(BookId,Title,TopicId,PublisherName,Placeof Publication,Price,PurchaseDate, Shelf no) values (8293,'DBMS','DB1','PrenticeHall','Mumbai',255,'1995-01-01','S11');
+
+e)
+i)Update PROGRAMMER SET Languages='C++' where LastName='saurav';
+ii)Update Books SET Shelf no='s10' where Title='DBMS';
+iii)Delete from PROGRAMMER where FirstName='supriya';
+iv)Alter Table WHEATHER ADD climate varchar(20);
+v)DROP TABLE WHEATHER;
+
+f)
+CREATE TABLE CUSTOMER(CUSTID INTEGER(10) PRIMARY KEY,FNAME VARCHAR(30),LNAME VARCHAR(30),ADDRESS VARCHAR(50),PHONE NO INTEGER(10) NOT NULL,CITY VARCHAR(20),COUNTRY VARCHAR(20),DATEFIRSTPURCHASED DATE,SUPPLIERID INTEGER(5) REFERNCES SUPPLIER);
+
+CREATE TABLE SUPPLIER(SUPPLIERID INTEGER(5),SNAME VARCHAR(20),SCITY VARCHAR(20),SPHONE INTEGER(10),EMAIL VARCAHR(20));
+
+CREATE TABLE ORDER(ORDER ID INTEGER(5) PRIMARY KEY,ORDERDATE DATE,CUSTID INTEGER,QUANTITY INTEGER  CHECK(QUANTITY>0),ITEMID INTEGER REFERENCE ITEMS);
+
+
+G)
+
+v)select * from CUSTOMER WHERE CITY='CHENNAI';
+vi)select * from CUSTOMER WHERE CUSTOMER.FNAME=SUPPLIER.SNAME;
+vii)select CUSTID,FNAME,LNAME FROM CUSTOMER 
+viii)select * from supplier where city='coimbatore';
+ix) select * from supplier where sname like 'G%';
+x)select * from supplier where sname like '%e%';
+xi)select * from order where quantity<35;
+xii)select * from item where SUPPLIERID=3 AND MINQTY >7 ORDERBY ITEMID;
