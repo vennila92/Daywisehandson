@@ -1,0 +1,3 @@
+i)select fname,city,country from customer where city='chennai' or city='salem' or city='madurai';
+ii)select item.custid,item.fname,item.lname,item.datefirstpurchased from item inner join on customer.customerid=item.itemid;
+iii)select * from customer where supplierid =(select supplierid from item where itemname='dovesoap');
